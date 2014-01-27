@@ -12,7 +12,10 @@ def index():
 	if request.method == 'POST':
 		mongodb = 'mongodb://%s:%s/%s'%(v('server', "localhost"), v('port', "27017"), v('db'))
 		db.mongo.connect(mongodb)
-		query = 'db.mongo.%s.%s.find(%s)'% (v('db'), v('collection'), v('query'))
+        if v('command') == 'find':
+    		query = 'db.mongo.%s.%s.find(%s)'% (v('db'), v('collection'), v('query'))
+        elif v('command') == 'insert':
+    		query = 'db.mongo.%s.%s.insert(%s)'% (v('db'), v('collection'), v('query'))
 		result = eval(query)
 	return render_template('index.html', result=result, server=v('server'),
                                          db=v('db'), collection=v('collection'),

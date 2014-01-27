@@ -7,7 +7,8 @@
 	<label>find</label> button:find, count ... <br/>
 	<textarea name="query" rows=20 cols=100>{{find_query}}</textarea>
 	<br/>
-	<button type=submit>query</button>
+	<button type=submit name="find" value="find">find</button>
+	<button type=submit name="insert" value="insert">insert</button>
 </form>
 	<div>
 		{%for r in result%}
